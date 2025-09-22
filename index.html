@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无人机CAAC考证培训 - 专业无人机驾驶执照认证</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #004d99;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #0066cc;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #0066cc;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: #0066cc;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #0066cc;
+        }
+        
+        /* 首页横幅样式 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* 关于我们样式 */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* 培训课程样式 */
+        .courses {
+            background-color: #f9f9f9;
+        }
+        
+        .course-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .course-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .course-card:hover .course-img img {
+            transform: scale(1.1);
+        }
+        
+        .course-info {
+            padding: 20px;
+        }
+        
+        .course-info h3 {
+            margin-bottom: 10px;
+            color: #0066cc;
+        }
+        
+        .course-info p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        /* 考试流程样式 */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+        }
+        
+        .step h4 {
+            margin-bottom: 10px;
+        }
+        
+        /* 新闻动态样式 */
+        .news {
+            background-color: #f9f9f9;
+        }
+        
+        .news-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .news-date {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        /* 联系方式样式 */
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin-right: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: #0066cc;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: 30px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzAwNjZjYyIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjUwIiByPSIzMCIgZmlsbD0id2hpdGUiLz48cGF0aCBkPSJNODAgNDAgTDEyMCA0MCBMMTIwIDYwIEw4MCA2MCBaIiBmaWxsPSIjMDA2NmNjIi8+PHBhdGggZD0iTTkwIDQ1IEwxMTAgNDUgTDEwNSA1NSBMOTUgNTUgWiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=" alt="无人机CAAC考证培训">
+                    <h1>无人机CAAC考证培训</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#courses">培训课程</a></li>
+                    <li><a href="#process">考试流程</a></li>
+                    <li><a href="#news">新闻动态</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>专业无人机CAAC驾驶执照认证培训</h2>
+            <p>我们提供全面的无人机驾驶培训服务，帮助您顺利通过CAAC认证考试，获得合法飞行资格</p>
+            <a href="#contact" class="btn">立即咨询</a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于我们</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>专业的无人机培训中心</h3>
+                    <p>我们是一家经中国民用航空局(CAAC)认证的无人机驾驶员培训机构，拥有多年的无人机培训经验和专业的教学团队。</p>
+                    <p>我们的培训中心配备先进的无人机设备和模拟训练系统，提供从基础理论到实操飞行的全方位培训服务。</p>
+                    <p>我们致力于培养合格的无人机驾驶员，为无人机行业输送专业人才，推动无人机应用在各个领域的发展。</p>
+                    <a href="#courses" class="btn">查看课程</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="无人机培训">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 培训课程 -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>培训课程</h2>
+            </div>
+            <div class="course-cards">
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1579829366248-204fe8413f31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="基础课程">
+                    </div>
+                    <div class="course-info">
+                        <h3>无人机基础操作课程</h3>
+                        <p>适合零基础学员，学习无人机基本操作和安全知识</p>
+                        <p><strong>培训时长：</strong>2周</p>
+                        <p><strong>课程费用：</strong>¥9,999</p>
+                        <a href="#contact" class="btn">立即报名</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="CAAC认证课程">
+                    </div>
+                    <div class="course-info">
+                        <h3>CAAC认证驾驶员课程</h3>
+                        <p>针对CAAC认证考试的专业培训，包含理论和实操</p>
+                        <p><strong>培训时长：</strong>4周</p>
+                        <p><strong>课程费用：</strong>¥9,999</p>
+                        <a href="#contact" class="btn">立即报名</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="进阶课程">
+                    </div>
+                    <div class="course-info">
+                        <h3>无人机应用进阶课程</h3>
+                        <p>学习航拍、测绘、植保等专业应用技能</p>
+                        <p><strong>培训时长：</strong>3周</p>
+                        <p><strong>课程费用：</strong>¥9,999</p>
+                        <a href="#contact" class="btn">立即报名</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 考试流程 -->
+    <section id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>考试流程</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h4>报名注册</h4>
+                    <p>填写报名表，提交相关资料</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h4>理论学习</h4>
+                    <p>学习无人机相关法规和飞行原理</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h4>实操训练</h4>
+                    <p>在教练指导下进行实际飞行训练</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">4</div>
+                    <h4>模拟考试</h4>
+                    <p>进行模拟测试，评估学习效果</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">5</div>
+                    <h4>正式考试</h4>
+                    <p>参加CAAC组织的认证考试</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻动态 -->
+    <section id="news" class="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>新闻动态</h2>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-date">2025-10-15</div>
+                    <div class="news-content">
+                        <h3>2025年第四期CAAC认证考试通知</h3>
+                        <p>2025年第四期无人机驾驶员认证考试将于11月20日举行，报名截止日期为11月5日。</p>
+                        <a href="#">了解更多</a>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-09-28</div>
+                    <div class="news-content">
+                        <h3>无人机应用技术研讨会成功举办</h3>
+                        <p>我中心举办的无人机应用技术研讨会圆满结束，吸引了行业内外众多专业人士参与。</p>
+                        <a href="#">了解更多</a>
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025-09-10</div>
+                    <div class="news-content">
+                        <h3>新增无人机植保专业培训课程</h3>
+                        <p>为满足市场需求，我中心新增无人机植保专业培训课程，欢迎农业从业者报名学习。</p>
+                        <a href="#">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>培训中心信息</h3>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>地址</h4>
+                            <p>山东省济南市槐荫区中建锦绣广场</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>电话</h4>
+                            <p>010-12345678 / 400-800-8800</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>邮箱</h4>
+                            <p>admin@12345.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h4>工作时间</h4>
+                            <p>周一至周五 9:00-18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>在线咨询</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">电话</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">咨询内容</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">提交咨询</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>无人机CAAC考证培训</h3>
+                    <p>我们是一家经中国民用航空局(CAAC)认证的无人机驾驶员培训机构，致力于培养合格的无人机驾驶员。</p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#courses">培训课程</a></li>
+                        <li><a href="#process">考试流程</a></li>
+                        <li><a href="#news">新闻动态</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系方式</h3>
+                    <ul class="footer-links">
+                        <li>地址：山东省济南市槐荫区中建锦绣广场</li>
+                        <li>电话：010-12345678</li>
+                        <li>邮箱：admin@12345.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 无人机CAAC考证培训中心 版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
